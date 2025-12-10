@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For My Babygirl ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-base: #4E0707;
+      --gold-1: #d6b25c;
+      --gold-2: #f7e3a5;
+      --text-main: #fff7eb;
+      --text-soft: #f3d0c2;
+      --accent-pink: #ffb6d5;
+      --accent-gold: #ffe8a8;
+      --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --radius-lg: 22px;
+      --radius-sm: 12px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--text-main);
+      background-color: var(--bg-base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* background image from your file */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(12, 0, 0, 0.7), rgba(12, 0, 0, 0.9)),
+        url("lantern-bg.jpeg") center/cover no-repeat;
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .frame {
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 30px;
+      padding: 22px 24px 26px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background:
+        linear-gradient(#4E0707, #4E0707) padding-box,
+        linear-gradient(135deg, #90670e, #f7e3a5, #a47d2b) border-box;
+      border: 2px solid transparent;
+    }
+
+
+    .window-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    }
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green { background: #28c840; }
+
+    .url-bar {
+      flex: 1;
+      height: 26px;
+      border-radius: 999px;
+      background: #3b0505;
+      border: 1px solid rgba(255, 230, 180, 0.5);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 11px;
+      color: var(--text-soft);
+      font-family: var(--mono);
+      overflow: hidden;
+    }
+
+    .url-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      margin-right: 6px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 840px) {
+      .frame { padding: 18px 16px 20px; }
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    .soft-glow {
+      text-shadow:
+        0 0 3px rgba(255, 246, 210, 0.4),
+        0 0 7px rgba(255, 215, 160, 0.4);
+    }
+
+    h1 {
+      font-size: clamp(26px, 3vw, 32px);
+      line-height: 1.15;
+      margin: 2px 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span.accent {
+      background: linear-gradient(90deg, #d6b25c, #f7e3a5, #d6b25c);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow:
+        0 0 4px rgba(255, 250, 220, 0.6),
+        0 0 10px rgba(255, 230, 170, 0.6);
+    }
+
+    /* HERO */
+    .hero-card {
+      background-color: #3b0505;
+      border-radius: 22px;
+      padding: 20px 20px 18px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 225, 180, 0.6);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #2a0202;
+      border: 1px solid rgba(255, 225, 180, 0.7);
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+
+    .hero-pill span.heart {
+      color: var(--accent-pink);
+      font-size: 13px;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 320px;
+      margin-bottom: 16px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 225, 180, 0.6);
+      background: #2a0202;
+      color: var(--text-soft);
+    }
+
+    .chip span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+      background: var(--accent-gold);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-main,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 12px;
+      border: 1px solid transparent;
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .btn-main {
+      background: linear-gradient(120deg, #d6b25c, #f7e3a5, #d6b25c);
+      color: #3b0505;
+    }
+
+    .btn-ghost {
+      background: #2a0202;
+      border-color: rgba(255, 225, 180, 0.7);
+      color: var(--text-soft);
+    }
+
+    .btn-main span.icon,
+    .btn-ghost span.icon {
+      font-size: 14px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .hero-meta span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: var(--mono);
+      color: rgba(255, 235, 200, 0.9);
+    }
+
+    .hero-photo {
+      position: absolute;
+      right: -20px;
+      bottom: -10px;
+      width: 180px;
+      max-width: 50%;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.85);
+      border: 2px solid rgba(255, 235, 200, 0.8);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 840px) {
+      .hero-card { padding-bottom: 160px; }
+      .hero-photo {
+        right: 14px;
+        bottom: 14px;
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-card { padding-bottom: 140px; }
+      .hero-photo { width: 135px; }
+    }
+
+    /* RIGHT COLUMN: LOVE NOTE + GALLERY */
+    .right-col {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+    }
+
+    .panel {
+      background: #320404;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 225, 180, 0.65);
+      padding: 14px 14px 12px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.75);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .panel-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 215, 160, 0.16);
+      color: var(--accent-gold);
+      font-family: var(--mono);
+    }
+
+    .panel-body {
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    /* LOVE NOTE with puns */
+    .love-note p {
+      margin: 0 0 8px;
+      color: var(--text-soft);
+    }
+
+    .love-note p span {
+      color: var(--accent-pink);
+    }
+
+    .love-note ul {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 4px 18px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .love-note li::before {
+      content: "♥";
+      color: var(--accent-pink);
+      margin-right: 6px;
+      font-size: 10px;
+      position: relative;
+      top: -0.5px;
+    }
+
+    @media (max-width: 520px) {
+      .love-note ul { grid-template-columns: 1fr; }
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 8px;
+    }
+
+    .gallery-main,
+    .gallery-side {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(255, 225, 180, 0.85);
+      background: #260202;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-main img,
+    .gallery-side img {
+      width: 100%;
+      height: 190px;
+      display: block;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(20, 1, 1, 0.9);
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 225, 180, 0.7);
+    }
+
+    @media (max-width: 520px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-main img,
+      .gallery-side img { height: 160px; }
+    }
+
+    /* FOOTER */
+    .footer-bar {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-soft);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .heartbeat {
+      width: 60px;
+      height: 18px;
+      border-radius: 999px;
+      background: #260202;
+      border: 1px solid rgba(255, 225, 180, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .heartbeat span {
+      width: 3px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 215, 160, 0.4);
+    }
+
+    .heartbeat span:nth-child(2),
+    .heartbeat span:nth-child(4) {
+      height: 13px;
+      background: rgba(255, 215, 160, 0.9);
+    }
+
+    .heartbeat span:nth-child(3) {
+      height: 18px;
+      background: rgba(255, 238, 190, 1);
+    }
+
+    .signature span.name {
+      color: var(--accent-gold);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background music: replace src with your audio file -->
+<audio id="bg-music" loop>
+  <source src="our-song.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  document.addEventListener("click", function () {
+    const audio = document.getElementById("bg-music");
+    if (audio && audio.paused) {
+      audio.play();
+    }
+  }, { once: true });
+</script>
+
+
+  <main class="frame">
+    <header class="window-header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <div class="url-bar soft-glow">
+        <div class="url-dot"></div>
+        <span>for-my-babygirl.localhost/love-story</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <!-- LEFT: HERO -->
+      <div class="hero-card">
+        <div class="hero-pill soft-glow">
+          <span class="heart">♥</span>
+          <span>ROMANTIC • GOLDEN • NERDY</span>
+        </div>
+        <h1 class="soft-glow">
+          For <span class="accent">my babygirl</span>,<br />
+          my favorite line of code.
+        </h1>
+        <p class="hero-subtitle soft-glow">
+          A tiny dark red universe that i created on the internet for us, so every time you open this, it feels like our own lantern scene.
+        </p>
+
+        <div class="chip-row">
+          <div class="chip soft-glow"><span class="dot"></span> &lt;couple mode="forever"&gt;</div>
+          <div class="chip soft-glow">console.log("i love you a little extra");</div>
+          <div class="chip soft-glow">commit: "fell for my babygirl"</div>
+        </div>
+
+        <div class="hero-buttons">
+          <div class="btn-main soft-glow">
+            <span class="icon">★</span>
+            <span>OPEN OUR STORY</span>
+          </div>
+          <div class="btn-ghost soft-glow">
+            <span class="icon">∞</span>
+            <span>RUNTIME: ALWAYS</span>
+          </div>
+        </div>
+
+        <div class="hero-meta">
+          <div class="soft-glow">
+            <span class="label">Built by</span><br />
+            kukoo &lt;3
+          </div>
+          <div class="soft-glow">
+            <span class="label">For</span><br />
+            my babygirl — the prettiest bug in my system
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <!-- your hero picture -->
+          <img src="hero.jpeg" alt="Us together" />
+        </div>
+      </div>
+
+      <!-- RIGHT: LOVE NOTE + GALLERY -->
+      <div class="right-col">
+
+        <!-- Love note (with puns added) -->
+        <article class="panel love-note">
+          <div class="panel-header">
+            <div class="panel-title soft-glow">love_note_for_my_babygirl.txt</div>
+            <div class="panel-tag soft-glow">EDIT LATER</div>
+          </div>
+          <div class="panel-body">
+            <p class="soft-glow">
+              Hiii! <span>Babygirl</span>, So this is a small gesture to show how much i love you because texts and reels were not enough to store how much i adore you.
+
+            </p>
+            <p class="soft-glow">
+              you’re the Chandler to my Monica—funny, perfect, and a little obsessed with me.
+            </p>
+            <p class="soft-glow">
+              are you a lantern? because you light up my world.
+            </p>
+            <p class="soft-glow">
+              you’re my lobster. 🦞
+            </p>
+            <p class="soft-glow">
+              let’s be like Rapunzel’s hair—entangled forever.
+            </p>
+            <ul>
+              <li class="soft-glow">you look unreal when you disappear into your tech world.</li>
+              <li class="soft-glow">your smile makes even dark red feel soft and safe.</li>
+              <li class="soft-glow">hugging you is better than any comfort playlist.</li>
+              <li class="soft-glow">you’re my favorite calm.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Gallery with pictures back -->
+        <article class="panel">
+          <div class="panel-header">
+            <div class="panel-title soft-glow">photo_gallery_for_us()</div>
+            <div class="panel-tag soft-glow">MEMORIES</div>
+          </div>
+          <div class="panel-body">
+            <div class="gallery-grid">
+              <div class="gallery-main">
+                <!-- replace memory1.jpg later -->
+                <img src="memory1.jpeg" alt="Our memory 1" />
+                <div class="gallery-label">OUR CUTEST PIC</div>
+              </div>
+              <div class="gallery-side">
+                <!-- replace memory2.jpg later -->
+                <img src="memory2.jpeg" alt="Our memory 2" />
+                <div class="gallery-label">YOUR FAVORITE SELFIE</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bar">
+      <div class="signature soft-glow">
+        MADE WITH &lt;3 BY <span class="name">kukoo</span>
+      </div>
+      <div class="heartbeat">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="signature soft-glow">
+        UPTIME: 100% WHEN my babygirl SMILES
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
